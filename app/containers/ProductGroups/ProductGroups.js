@@ -3,17 +3,8 @@ import { View, Text, ScrollView } from 'react-native';
 import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
 import ProductGroupsList from '../../components/ProductGroupsList';
 import ProductGroupButton from '../../components/ProductGroupButton';
-
-const predefinedGroups = [
-  { name: 'Meat', key: 1 },
-  { name: 'Milk', key: 2 },
-  { name: 'Candies', key: 3 },
-  { name: 'Chicken', key: 4 },
-  { name: 'Chicken', key: 5 },
-  { name: 'Chicken', key: 6 },
-  { name: 'Chicken', key: 7 },
-  { name: 'Chicken', key: 8 },
-];
+import renderIf from '../../lib/renderIf';
+import productGroups from '../../constants/productGroups';
 
 class ProductGroups extends Component {
   _renderProductGroupInput(item, index) {
@@ -27,14 +18,16 @@ class ProductGroups extends Component {
       <Container>
         <Header />
         <Content>
-          <ProductGroupsList />
+          <ProductGroupsList productGroups={this.props.productGroups} />
         </Content>
 
-        <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-end'}}>
-          <ScrollView horizontal={true}>
-            {predefinedGroups.map(this._renderProductGroupInput)}
-          </ScrollView>
-        </View>
+        {renderIf(true)(
+          <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-end'}}>
+            <ScrollView horizontal={true}>
+              {productGroups.map(this._renderProductGroupInput)}
+            </ScrollView>
+          </View>
+        )}
 
         <Footer>
           <FooterTab>
