@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { Content, Container, Footer, FooterTab, Button, Header } from 'native-base';
-import ProductGroupsList from '../../components/ProductGroupsList';
+import ProductGroups from '../ProductGroups';
 
 class RootContainer extends Component {
+  // TODO: Navigation container
   render() {
     return (
-      <Container>
-        <Header />
-        <Content>
-          <ProductGroupsList />
-        </Content>
-
-        <Footer>
-          <FooterTab>
-            <Button>
-              <Text>Add</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+      <ProductGroups />
     )
   }
 }
